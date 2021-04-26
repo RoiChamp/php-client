@@ -60,6 +60,43 @@ $roichamp->unsubscribe('office@roichamp.com')
 | `email`      | `string` | yes      | Subscriber email address.   |
 
 
+
+### Category Upsert
+
+```php
+$roichamp->upsertProduct([
+    'identity' => '42141',
+    'title' => 'Product title',
+    'image' => '...',
+    'permalink' => '...',
+    'suggest' => 1,
+    'metaData' => [
+        'foo' => 'bar'
+    ],
+])
+```
+
+
+### Product Upsert
+
+```php
+$roichamp->upsertProduct([
+    'identity' => '14214',
+    'title' => 'Product title',
+    'price' => 199,
+    'price_promo' => 99,
+    'currency' => 'USD',
+    'image' => '...',
+    'permalink' => '...',
+    'content' => 'Product description',
+    'suggest' => 1,
+    'categoryIdentities' => ['42141'],
+    'metaData' => [
+        'foo' => 'bar'
+    ],
+])
+```
+
 ### Send transactional email
 
 ```php
