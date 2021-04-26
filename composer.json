@@ -1,0 +1,25 @@
+{
+    "name": "roichamp/php-client",
+    "type": "library",
+    "description": "A PHP wrapper for the RoiChamp REST API",
+    "keywords": ["API", "RoiChamp", "PHP", "Email Marketing"],
+    "homepage": "https://roichamp.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stanko Arsenijevic",
+            "email": "stanko@roichamp.com",
+            "homepage": "https://www.linkedin.com/in/stanko-arsenijevic-6a3473151/"
+        }
+    ],
+    "require": {
+        "php": ">= 5.4.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+          "RoiChamp\\": ["src/"]
+        }
+    }
+}
