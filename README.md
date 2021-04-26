@@ -5,7 +5,7 @@ A PHP wrapper for the RoiChamp REST API. Easily interact with the RoiChamp REST 
 ## Installation
 
 ```
-composer require roichamp/php-client
+composer require roichamp/php-client dev-main
 ```
 
 ## Getting started
