@@ -10,13 +10,15 @@ composer require roichamp/php-client
 
 ## Getting started
 
-For API credentials please contact us on office@roichamp.com
+To get your API key contact us on office@roichamp.com
 
 
 ## Client class
 
 ```php
-$roichamp = new Client('INSERT_API_KEY_HER');
+$roichamp = new \RoiChamp\Client([
+    'token' => 'API_KEY'
+]);
 ```
 
 ## Client methods
@@ -24,20 +26,60 @@ $roichamp = new Client('INSERT_API_KEY_HER');
 ### Subscriber Upsert
 
 ```php
-$roichamp->upsertSubscriber($parameters = [])
+$roichamp->upsertSubscriber([
+    'email' => 'office@roichamp.com',
+    'first_name' => 'Roi',
+    'last_name' => 'Champ',
+    'phone' => '+381123123',
+    'metaData' => [
+        'source' => 'google'
+    ],
+])
 ```
 
 #### Arguments
 
-| Params       | Type     | Required | Description |
-|--------------|----------|----------|-------------|
-| `email`      | `string` | yes      |             |
-| `first_name` | `string` | no       |             |
-| `last_name`  | `string` | no       |             |
-| `phone`      | `string` | no       |             |
-| `metaData`   | `array`  | no       |             |
+| Params       | Type     | Required | Description                 |
+|--------------|----------|----------|-----------------------------|
+| `email`      | `string` | yes      | Subscriber email address.   |
+| `first_name` | `string` | no       | Subscriber first name.      |
+| `last_name`  | `string` | no       | Subscriber last name.       |
+| `phone`      | `string` | no       | Subscriber phone number.    |
+| `metaData`   | `array`  | no       | Key-value custom meta data. |
+
+### Subscriber Unsubscribe
+
+```php
+$roichamp->unsubscribe('office@roichamp.com')
+```
+
+#### Arguments
+
+| Params       | Type     | Required | Description                 |
+|--------------|----------|----------|-----------------------------|
+| `email`      | `string` | yes      | Subscriber email address.   |
+
+
+### Send transactional email
+
+```php
+$roichamp->sendEmail([
+    'identity' => 'reset_password',
+    'to' => 'office@roichamp.com',
+    'params' => [
+        'reset_url' => '...',
+    ],
+])
+```
+#### Arguments
+
+| Params       | Type     | Required | Description                      |
+|--------------|----------|----------|----------------------------------|
+| `identity`   | `string` | yes      | Email identity.                  |
+| `email`      | `string` | yes      | Subscriber email address.        |
+| `params`     | `array`  | no       | Key-value custom email params.   |
 
 
 ## Release History
 
-- 2021-04-26 - 1.0.0 - First release.
+- 2021-04-26 - 1.0.0 - Pre-release.
