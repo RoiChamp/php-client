@@ -92,12 +92,14 @@ class Client{
 
     public function upsertSubscriber(array $data){
 
-        if( !isset( $data['email'] ) ){
-            $this->warning("Email is not defined.");            
+        if( !isset( $data['email'] ) && !isset( $data['identity'] ) ){
+            $this->warning("Email/Identity is not defined.");            
         }
 
-        if( filter_var($data['email'], FILTER_VALIDATE_EMAIL) === FALSE ){
-            $this->warning("Email is not valid.");            
+        if( isset( $data['email'] ) ){
+            if( filter_var($data['email'], FILTER_VALIDATE_EMAIL) === FALSE ){
+                $this->warning("Email is not valid.");            
+            }
         }
 
         return $this->post('subscriber/upsert', $data);
