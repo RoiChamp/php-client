@@ -56,6 +56,15 @@ class Client{
         return $this->post('email/send', $data);
     }
 
+    public function pageView(array $data){
+
+        if( !isset( $data['url'] ) ){
+            $this->warning("Url is not defined.");            
+        }
+
+        return $this->post('site-page-view/track', $data);
+    }
+
     public function upsertProduct(array $data){
 
         if( !isset( $data['identity'] ) ){
